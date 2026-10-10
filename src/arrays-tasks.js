@@ -141,9 +141,14 @@ function getAverage(arr) {
  *    isSameLength(['orange', 'banana', 'cherry']) => true
  *    isSameLength(['cat', 'dog', 'elephant']) => false
  */
-function isSameLength(/* arr */) {
-  throw new Error('Not implemented');
+function isSameLength(arr) {
+  if (arr.length === 0) {
+    return true;
+  }
+  const { length } = arr[0];
+  return arr.every((str) => str.length === length);
 }
+// throw new Error('Not implemented');
 
 /**
  * Checks if there are elements in the array where the value is equal to its index.
@@ -156,9 +161,10 @@ function isSameLength(/* arr */) {
  *    isValueEqualsIndex([2, 1, 0, 4, 5]) => true
  *    isValueEqualsIndex([10, 20, 30, 40, 50]) => false
  */
-function isValueEqualsIndex(/* arr */) {
-  throw new Error('Not implemented');
+function isValueEqualsIndex(arr) {
+  return arr.some((value, index) => value === index);
 }
+// throw new Error('Not implemented');
 
 /**
  * Inserts the item into specified array at specified index.
