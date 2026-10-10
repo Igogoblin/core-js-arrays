@@ -536,7 +536,6 @@ function findLongestIncreasingSubsequence(/* nums */) {
 function propagateItemsByPositionIndex(arr) {
   return arr.flatMap((item, index) => Array(index + 1).fill(item));
 }
-// throw new Error('Not implemented');
 
 /**
  * Shifts an array by n positions. If n is negative, the array is shifted to the left;
@@ -551,8 +550,13 @@ function propagateItemsByPositionIndex(arr) {
  *    shiftArray(['a', 'b', 'c', 'd'], -1) => ['b', 'c', 'd', 'a']
  *    shiftArray([10, 20, 30, 40, 50], -3) => [40, 50, 10, 20, 30]
  */
-function shiftArray(/* arr, n */) {
-  throw new Error('Not implemented');
+function shiftArray(arr, n) {
+  const { length } = arr;
+  if (length === 0) {
+    return arr;
+  }
+  const shift = ((n % length) + length) % length;
+  return arr.slice(-shift).concat(arr.slice(0, -shift));
 }
 
 /**
@@ -568,8 +572,20 @@ function shiftArray(/* arr, n */) {
  *   sortDigitNamesByNumericOrder([ 'nine','eight','nine','eight' ]) => [ 'eight','eight','nine','nine']
  *   sortDigitNamesByNumericOrder([ 'one','one','one','zero' ]) => [ 'zero','one','one','one' ]
  */
-function sortDigitNamesByNumericOrder(/* arr */) {
-  throw new Error('Not implemented');
+function sortDigitNamesByNumericOrder(arr) {
+  const digitOrder = [
+    'zero',
+    'one',
+    'two',
+    'three',
+    'four',
+    'five',
+    'six',
+    'seven',
+    'eight',
+    'nine',
+  ];
+  return arr.sort((a, b) => digitOrder.indexOf(a) - digitOrder.indexOf(b));
 }
 
 /**
@@ -591,8 +607,16 @@ function sortDigitNamesByNumericOrder(/* arr */) {
  *   swapHeadAndTail([]) => []
  *
  */
-function swapHeadAndTail(/* arr */) {
-  throw new Error('Not implemented');
+function swapHeadAndTail(arr) {
+  const { length } = arr;
+  const mid = Math.floor(length / 2);
+  const head = arr.slice(0, mid);
+  const tail = arr.slice(length - mid);
+  if (length % 2 === 0) {
+    return [...tail, ...head];
+  }
+  const middleElement = arr[mid];
+  return [...tail, middleElement, ...head];
 }
 
 module.exports = {
