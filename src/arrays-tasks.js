@@ -24,7 +24,6 @@ function getIntervalArray(start, end) {
   const length = end - start + 1;
   return Array.from({ length }, (_, index) => start + index);
 }
-// throw new Error('Not implemented');
 
 /**
  * Returns a new array where each element is the sum of the corresponding elements
@@ -39,8 +38,10 @@ function getIntervalArray(start, end) {
  *    sumArrays([10, 20, 30], [5, 10, 15]) => [15, 30, 45]
  *    sumArrays([-1, 0, 1], [1, 2, 3, 4]) => [0, 2, 4, 4]
  */
-function sumArrays(/* arr1, arr2 */) {
-  throw new Error('Not implemented');
+function sumArrays(arr1, arr2) {
+  return arr1
+    .map((value, index) => value + (arr2[index] || 0))
+    .concat(arr2.slice(arr1.length));
 }
 
 /**
